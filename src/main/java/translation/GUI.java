@@ -45,6 +45,24 @@ public class GUI {
             buttonPanel.add(resultLabel);
 
 
+
+            // LIST
+            CountryCodeConverter converter = new CountryCodeConverter();
+            JSONTranslator tl_json = new JSONTranslator();
+            String[] items = new String[tl_json.getCountryCodes().size()];
+            JComboBox<String> countryComboBox = new JComboBox<>();
+            int i = 0;
+            for(String countryCode : tl_json.getCountryCodes()) {
+                items[i++] = converter.fromCountryCode(countryCode);
+            }
+
+            JList<String> list = new JList<>(items);
+            list.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+
+            JScrollPane scrollPane = new JScrollPane(list);
+            languagePanel.add(scrollPane, 1);
+
+
             // adding listener for when the user clicks the submit button
             submit.addActionListener(new ActionListener() {
                 @Override
@@ -70,8 +88,10 @@ public class GUI {
             mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
             mainPanel.add(countryPanel);
             mainPanel.add(languagePanel);
-            mainPanel.add(buttonPanel);
+//            mainPanel.add(buttonPanel);
             mainPanel.add(combo);
+            mainPanel.add(languagePanel);
+
 
             JFrame frame = new JFrame("Country Name Translator");
             frame.setContentPane(mainPanel);
