@@ -44,8 +44,6 @@ public class GUI {
             JLabel resultLabel = new JLabel("\t\t\t\t\t\t\t");
             buttonPanel.add(resultLabel);
 
-
-
             // LIST
             CountryCodeConverter converter = new CountryCodeConverter();
             JSONTranslator tl_json = new JSONTranslator();
