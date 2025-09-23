@@ -46,7 +46,7 @@ public class GUI {
                 items[i++] = converter.fromCountryCode(countryCode);
             }
             JList<String> list = new JList<>(items);
-            list.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+            list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
             JScrollPane scrollPane = new JScrollPane(list);
 
             JPanel countryPanel = new JPanel();
@@ -54,19 +54,8 @@ public class GUI {
             countryPanel.add(scrollPane, 1);
 
             // Event listener
-            combo.addItemListener(new ItemListener() {
-                @Override
-                public void itemStateChanged(ItemEvent e) {
-                    translateCountry(list, combo, resultLabel);
-                }
-            });
-
-            list.addListSelectionListener(new ListSelectionListener() {
-                @Override
-                public void valueChanged(ListSelectionEvent e) {
-                    translateCountry(list, combo, resultLabel);
-                }
-            });
+            combo.addItemListener(e -> translateCountry(list, combo, resultLabel));
+            list.addListSelectionListener(e -> translateCountry(list, combo, resultLabel));
 
             // Main panel
             JPanel mainPanel = new JPanel();
