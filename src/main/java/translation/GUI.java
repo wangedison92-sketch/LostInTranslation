@@ -27,9 +27,6 @@ public class GUI {
                 combo.addItem(countryCodeConverter.fromCountryCode(item));
             }
 
-
-
-
             JPanel languagePanel = new JPanel();
             JTextField languageField = new JTextField(10);
             languagePanel.add(new JLabel("Language:"));
@@ -66,13 +63,15 @@ public class GUI {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     String language = languageField.getText();
-                    String country = countryField.getText();
+//                    String country = countryField.getText();
+                    String country = combo.getSelectedItem().toString();
+                    String countryCode = countryCodeConverter.fromCountryCode(country);
 
                     // for now, just using our simple translator, but
                     // we'll need to use the real JSON version later.
                     Translator translator = new CanadaTranslator();
 
-                    String result = translator.translate(country, language);
+                    String result = translator.translate(countryCode, language);
                     if (result == null) {
                         result = "no translation found!";
                     }
