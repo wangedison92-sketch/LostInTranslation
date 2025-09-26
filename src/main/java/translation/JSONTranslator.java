@@ -90,6 +90,7 @@ public class JSONTranslator implements Translator {
         return new ArrayList<>(countryCodes);
     }
 
+
     @Override
     public String translate(String countryCode, String languageCode) {
         return translations.getOrDefault(countryCode + "-" + languageCode, null);

@@ -6,6 +6,7 @@ import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Arrays;
+import java.util.ArrayList;
 
 
 // TODO Task D: Update the GUI for the program to align with UI shown in the README example.
